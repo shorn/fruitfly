@@ -1,0 +1,59 @@
+plugins {
+  id 'java'
+  id 'org.jetbrains.intellij' version '1.17.1'
+}
+
+println 'Gradle build launched with Java version: ' + JavaVersion.current()
+
+group 'fruitfly'
+// this drives the version in plugin.xml, via the patchPluginXml task
+version '1.0'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+}
+
+intellij {
+  version = '2023.3'
+  downloadSources = true
+  plugins = ['com.intellij.java']
+  type = 'IC'
+}
+
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(17)
+    vendor = JvmVendorSpec.JETBRAINS
+  }
+}
+
+tasks.withType(JavaCompile).configureEach {
+  options.compilerArgs = [
+    '--release', '17'
+  ]
+}
+
+runIde {
+  // can't figure out how to get IDEA to log info messages to the console
+  standardOutput = System.out
+  errorOutput = System.out
+}
+
+patchPluginXml {
+  changeNotes = """
+    Change notes: 
+    <ul>
+      <li>Initial version of the plugin</li>
+    </ul>
+    """
+}
+
+// to upgrade, change the version below and run this task
+// https://gradle.org/releases/
+tasks.named('wrapper') {
+  distributionType = Wrapper.DistributionType.ALL
+  gradleVersion = '8.5'
+}

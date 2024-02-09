@@ -1,0 +1,28 @@
+<idea-plugin>
+  <id>fruitfly</id>
+  <name>Fruitfly Builder-Generator</name>
+  <!-- ignore this, it gets replace with the gradle project version by the
+    patchPluginXml task. -->
+  <version>1.0</version>
+  <vendor email="vendor@example.com" url="https://example.com">
+    Fruitfly vendor
+  </vendor>
+
+  <description><![CDATA[
+    Generate Builder pattern for Java records.
+  ]]></description>
+
+  <depends>com.intellij.modules.platform</depends>
+  <!-- If you don't have this, then try to use something like PsiClass on a
+    background thread (i.e. BGT vs EDT), you'll get a NoClassDef at runtime. -->
+  <depends>com.intellij.modules.java</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- MUST be kept in-sync with Constant.java, can't do it from code? -->
+    <notificationGroup id="Fruitfly Notifications" displayType="BALLOON"/>
+    <postStartupActivity implementation="fruitfly.Startup"/>
+  </extensions>
+
+</idea-plugin>
+
+

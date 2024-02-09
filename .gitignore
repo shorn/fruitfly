@@ -1,0 +1,13 @@
+
+# Gradle generated files
+.gradle
+
+
+# IDEA generated files
+.idea
+*.iml
+*.ipr
+
+/build
+
+
