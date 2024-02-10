@@ -14,7 +14,7 @@ public class Log {
       So uncomment the warn() when working that way, but don't commit it.
       */
     LOG.info(msg);
-    LOG.warn(msg);
+//    LOG.warn(msg);
   }
 
 
