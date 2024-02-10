@@ -1,4 +1,4 @@
-package fruitfly;
+package fruitfly.ide;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.ProjectActivity;

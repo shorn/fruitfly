@@ -20,7 +20,7 @@
   <extensions defaultExtensionNs="com.intellij">
     <!-- MUST be kept in-sync with Constant.java, can't do it from code? -->
     <notificationGroup id="Fruitfly Notifications" displayType="BALLOON"/>
-    <postStartupActivity implementation="fruitfly.Startup"/>
+    <postStartupActivity implementation="fruitfly.ide.Startup"/>
   </extensions>
 
 </idea-plugin>

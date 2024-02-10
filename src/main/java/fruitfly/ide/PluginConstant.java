@@ -1,4 +1,4 @@
-package fruitfly;
+package fruitfly.ide;
 
 /**
  These are own names we made up for our plugin, we make these up.

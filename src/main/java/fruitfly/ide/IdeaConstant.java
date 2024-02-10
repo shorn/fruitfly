@@ -1,4 +1,4 @@
-package fruitfly;
+package fruitfly.ide;
 
 /**
  These are names made up by JEtBrains.
