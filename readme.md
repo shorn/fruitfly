@@ -1,8 +1,8 @@
-Plugin for generation "Builder" classes for Java records.
+Plugin for generating "Builder" pattern code for Java records.
 
 This plugin will not be published in the marketplace.
-The intent is to copy it into what ever project I'm using it in and
-then customise it to suit the requirements of that specific project.
+The intent is to copy it into a target project and then customise it to suit 
+the requirements of that specific project.
 
 For the "why", see: [plugin-background.md](./doc/plugin-background.md)
 
