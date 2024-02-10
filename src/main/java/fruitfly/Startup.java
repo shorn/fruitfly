@@ -19,7 +19,7 @@ public class Startup implements ProjectActivity {
   ) {
     log("startup");
 
-    GenerateRecordBuilder.register();
+    BuilderAction.register();
 
     return null;
   }

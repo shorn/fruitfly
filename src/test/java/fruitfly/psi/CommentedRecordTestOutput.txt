@@ -1,0 +1,14 @@
+package fruitfly.psi;
+
+/** Record comment */
+public record CommentedRecordTestInput(
+  // field1 comment
+  String field1
+) {
+    public static class Builder {
+        public CommentedRecordTestInput build() {
+            return new CommentedRecordTestInput();
+        }
+    }
+    /* body comment */
+}

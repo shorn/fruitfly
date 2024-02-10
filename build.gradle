@@ -1,3 +1,5 @@
+import com.jogamp.nativewindow.DefaultGraphicsDevice
+
 plugins {
   id 'java'
   id 'org.jetbrains.intellij' version '1.17.1'
@@ -14,17 +16,31 @@ repositories {
 }
 
 dependencies {
+  /* see doc/adr/2024-02-10-use-junit4.md
+    https://github.com/junit-team/junit4/releases */
+  testImplementation 'junit:junit:4.13.2'
+
+  /* I just like assertj assertions much better than junit or hamcrest.
+    https://github.com/assertj/assertj/releases */
+  testImplementation 'org.assertj:assertj-core:3.25.3'
 }
 
 intellij {
-  version = '2023.3'
+  /* "/ Help / About" in sandbox IDEA reported `#IC-233.14015.106` */
+   version = '2023.3.3'
+  /* doesn't seem to work, see readme. */
   downloadSources = true
-  plugins = ['com.intellij.java']
+  /* community is smaller, less features - so faster startup */
   type = 'IC'
+  /* controls what libraries the gradle-intellij plugin will add do the
+  dependencies list.  Needs to be kept in sync with plugin.xml */
+  plugins = ['com.intellij.java']
 }
 
 java {
   toolchain {
+    // fruitfly only targets the one specific IDEA version, no need for
+    // backward compatibility so no need to worry about supporting old JDKs
     languageVersion = JavaLanguageVersion.of(17)
     vendor = JvmVendorSpec.JETBRAINS
   }
@@ -37,8 +53,9 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 runIde {
-  // can't figure out how to get IDEA to log info messages to the console
-  standardOutput = System.out
+  /* redirect to stdout to avoid IDEA console coloring it red, also makes
+    ordering of log messages in the console more consistent (stderr is
+    un-buffered, stdout is buffered) */
   errorOutput = System.out
 }
 
@@ -51,8 +68,8 @@ patchPluginXml {
     """
 }
 
-// to upgrade, change the version below and run this task
-// https://gradle.org/releases/
+/* to upgrade, change the version below and run this task
+  https://gradle.org/releases/ */
 tasks.named('wrapper') {
   distributionType = Wrapper.DistributionType.ALL
   gradleVersion = '8.5'

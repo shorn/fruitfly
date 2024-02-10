@@ -5,7 +5,7 @@ package fruitfly;
  */
 public class PluginConstant {
 
-  // these must be kept in-sync with the plugin.xml
+  // below must be kept in-sync with the plugin.xml
   public static final String NOTIFICATION_GROUP_ID = "Fruitfly Notifications";
 
 }

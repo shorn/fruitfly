@@ -10,4 +10,5 @@
 
 /build
 
-
+# local stuff i do not want committed
+/local

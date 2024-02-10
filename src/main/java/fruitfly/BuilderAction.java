@@ -12,6 +12,7 @@ import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
@@ -22,10 +23,10 @@ import static fruitfly.IdeaConstant.GENERATE_GROUP;
 import static fruitfly.PluginConstant.NOTIFICATION_GROUP_ID;
 import static fruitfly.util.Log.log;
 
-public class GenerateRecordBuilder extends AnAction {
+public class BuilderAction extends AnAction {
 
 
-  public GenerateRecordBuilder() {
+  public BuilderAction() {
     super(
       /* this is the entry you see in the generate menu.
         Set event.presentation.text in update() method if you want the
@@ -38,10 +39,10 @@ public class GenerateRecordBuilder extends AnAction {
 
   static void register() {
     ActionManager actionManager = ActionManager.getInstance();
-    var action = new GenerateRecordBuilder();
+    var action = new BuilderAction();
 
     actionManager.registerAction(
-      GenerateRecordBuilder.class.getSimpleName(),
+      BuilderAction.class.getName(),
       action);
 
     DefaultActionGroup generateGroup = (DefaultActionGroup)
@@ -50,24 +51,13 @@ public class GenerateRecordBuilder extends AnAction {
   }
 
   @Override
-  public void actionPerformed(@NotNull AnActionEvent e) {
-    log("GenerateRecordBuilder triggered");
-
-    // TODO: generate the builder
-
-    Notification notification = new Notification(
-      NOTIFICATION_GROUP_ID,
-      "Action triggered",
-      "GenerateRecordBuilder was triggered",
-      NotificationType.INFORMATION
-    );
-    Notifications.Bus.notify(notification, e.getProject());
-
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    return ActionUpdateThread.BGT;
   }
 
   @Override
   public void update(@NotNull AnActionEvent event) {
-    log("update()");
+    // log("update()");
     Project project = event.getProject();
     Editor editor = event.getData(CommonDataKeys.EDITOR);
     if( project == null || editor == null ){
@@ -83,37 +73,95 @@ public class GenerateRecordBuilder extends AnAction {
       return;
     }
 
-    // use of PSI_FILE is what requires updateThread = BGT
+    event.getPresentation().setEnabledAndVisible(isRecord(event) != null);
+  }
+
+  @Override
+  public void actionPerformed(@NotNull AnActionEvent event) {
+
+    Project project = event.getProject();
+    Editor editor = event.getData(CommonDataKeys.EDITOR);
+    if( project == null || editor == null ){
+      log("actionPerformed() no project or editor");
+      return;
+    }
+
+    var psiClass = isRecord(event);
+    if( psiClass == null ){
+      log("actionPerformed() when not a record");
+      return;
+    }
+
+
+    if( !showConfirmation(project, psiClass) ){
+      return;
+    }
+
+    // TODO: generate the builder
+    log("generate the builder");
+
+    Notification notification = new Notification(
+      NOTIFICATION_GROUP_ID,
+      "Action triggered",
+      "GenerateRecordBuilder was triggered",
+      NotificationType.INFORMATION
+    );
+    Notifications.Bus.notify(notification, event.getProject());
+
+  }
+
+  /**
+   Show Yes/No/Cancel - return true if yes.
+   IMPROVE: There's no difference between No anc Cancel, fix it if you want.
+   */
+  private boolean showConfirmation(Project project, PsiClass psiClass){
+    int response = Messages.showYesNoCancelDialog(
+      project,
+      "Generate a Fruitfly Builder for %s?".
+        // IMPROVE: maybe include parent name if it's nested?
+        formatted(psiClass.getName()),
+      "Confirmation",
+      "Yes",
+      "No",
+      "Cancel",
+      Messages.getQuestionIcon()
+    );
+
+    return response == Messages.YES;
+  }
+
+  /**
+   use of PSI_FILE in update() method is what requires updateThread = BGT
+   */
+  private static PsiClass isRecord(@NotNull AnActionEvent event) {
+    Project project = event.getProject();
+    Editor editor = event.getData(CommonDataKeys.EDITOR);
+    if( project == null || editor == null ){
+      return null;
+    }
+
     PsiFile file = event.getData(CommonDataKeys.PSI_FILE);
     if( file == null ){
-      event.getPresentation().setEnabledAndVisible(false);
-      return;
+      return null;
     }
 
     PsiElement elementAtCaret = file.findElementAt(
       editor.getCaretModel().getOffset());
     if( elementAtCaret == null ){
-      event.getPresentation().setEnabledAndVisible(false);
-      return;
+      return null;
     }
 
     PsiClass psiClass = getParentOfType(elementAtCaret, PsiClass.class, false);
     if( psiClass == null ){
-      event.getPresentation().setEnabledAndVisible(false);
-      return;
+      return null;
     }
 
     if( !psiClass.isRecord() ){
-      event.getPresentation().setEnabledAndVisible(false);
-      return;
+      return null;
     }
 
-    event.getPresentation().setEnabledAndVisible(true);
+    return psiClass;
   }
 
-  @Override
-  public @NotNull ActionUpdateThread getActionUpdateThread() {
-    return ActionUpdateThread.BGT;
-  }
 
 }

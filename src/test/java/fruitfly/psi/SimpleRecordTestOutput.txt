@@ -1,0 +1,9 @@
+package fruitfly.psi;
+
+public record SimpleRecordTestInput(String field1) {
+    public static class Builder {
+        public SimpleRecordTestInput build() {
+            return new SimpleRecordTestInput();
+        }
+    }
+}
