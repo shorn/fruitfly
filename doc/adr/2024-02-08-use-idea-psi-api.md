@@ -3,7 +3,8 @@ code.
 
 It's a trade-off, the PSI APIs will probably change a lot and require
 maintenance to keep the plugin up-to-date, but at least it won't ever go
-un-maintained like Poet, etc.
+un-maintained like Poet, etc. (at least, not in the timeframe that the builder 
+plugin itself is still desirable).
 
 Also unfortunately, because IDEA has very powerful code refactoring/generation
 abilities, and it deals with lots of different languages besides Java,
