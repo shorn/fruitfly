@@ -56,9 +56,9 @@ See [2024-02-08-use-idea-psi-api.md](./adr/2024-02-08-use-idea-psi-api.md)
 
 ## Benefits of using a project-specific plugin
 
-The idea behind using a project-specific plugin is the opinion that there's
-no "right" way to structure a builder - only "this is the way we do it on this
-project".
+The rationale for adopting a project-specific plugin stems from the belief that
+there is no universally "right" way to structure a builder; rather only, 
+"this is the way we do it on this project".
 
 Having the plugin be specifically written for "the project way" means
 it can be fast to invoke and there's no need to spend time writing and
