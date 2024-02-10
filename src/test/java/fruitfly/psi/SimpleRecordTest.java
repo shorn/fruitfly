@@ -6,10 +6,6 @@ import fruitfly.test.FruitflyTestCase;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- Not really verifying the plugin, just verifying that I am using the
- test framework correctly.
- */
 public class SimpleRecordTest extends FruitflyTestCase {
   private static final Logger log = Logger.getInstance(SimpleRecordTest.class);
 

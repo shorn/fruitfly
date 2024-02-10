@@ -1,8 +1,5 @@
 package fruitfly.ide;
 
-import com.intellij.notification.Notification;
-import com.intellij.notification.NotificationType;
-import com.intellij.notification.Notifications;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
@@ -22,7 +19,6 @@ import org.jetbrains.annotations.NotNull;
 
 import static com.intellij.psi.util.PsiTreeUtil.getParentOfType;
 import static fruitfly.ide.IdeaConstant.GENERATE_GROUP;
-import static fruitfly.ide.PluginConstant.NOTIFICATION_GROUP_ID;
 import static fruitfly.util.Log.log;
 
 public class BuilderAction extends AnAction {
@@ -34,7 +30,7 @@ public class BuilderAction extends AnAction {
         Set event.presentation.text in update() method if you want the
         value to be dynamic. */
       "Fruitfly Builder",
-      /* used in tooltips and other places where there's more space" */
+      /* used in tooltips and other places where there's more space */
       "Generate a Builder pattern for the record",
       null);
   }
@@ -105,15 +101,6 @@ public class BuilderAction extends AnAction {
       var generator = new BuilderGenerator(psiClass);
       generator.generateBuilderClass();
     });
-
-
-    Notification notification = new Notification(
-      NOTIFICATION_GROUP_ID,
-      "Action triggered",
-      "GenerateRecordBuilder was triggered",
-      NotificationType.INFORMATION
-    );
-    Notifications.Bus.notify(notification, event.getProject());
 
   }
 

@@ -1,0 +1,24 @@
+package fruitfly.psi;
+
+public class NestedRecordTestInput {
+
+  public static void method(){
+
+  }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public Builder but() {
+        return new Builder();
+    }
+
+    public record Sample(String field1, String field2){}
+
+    public static class Builder {
+        public NestedRecordTestInput build() {
+            return new NestedRecordTestInput();
+        }
+    }
+}

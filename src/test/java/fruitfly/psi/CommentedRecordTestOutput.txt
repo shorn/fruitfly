@@ -5,9 +5,24 @@ public record CommentedRecordTestInput(
   // field1 comment
   String field1
 ) {
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public Builder but() {
+        return new Builder().field1(field1);
+    }
+
     public static class Builder {
+        private String field1;
+
+        public Builder field1(String field1) {
+            this.field1 = field1;
+            return this;
+        }
+
         public CommentedRecordTestInput build() {
-            return new CommentedRecordTestInput();
+            return new CommentedRecordTestInput(this.field1);
         }
     }
     /* body comment */
