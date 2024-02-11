@@ -28,7 +28,7 @@ public class BuilderGenerator {
     List<String> selectFieldNames
   ) {
     assert recordClass.isRecord() :
-      "this implementation is designed only for  records";
+      "this implementation is designed only for records";
     var selectedFields = mapNamesToFields(recordClass, selectFieldNames);
 
     removeBuilderClasses(recordClass);
@@ -39,13 +39,13 @@ public class BuilderGenerator {
     // create builder pattern structures and add them to the record
     PsiElement builderClass = recordClass.addBefore(
       createBuilderClass(recordClass, selectedFields),
-      endOfClass);
+      endOfClass );
     PsiElement butMethod = recordClass.addBefore(
       createButMethod(recordClass, selectedFields),
-      builderClass);
+      builderClass );
     PsiElement builderMethod = recordClass.addBefore(
       createBuilderMethod(recordClass, selectedFields),
-      butMethod);
+      butMethod );
 
     formatRecordCode(recordClass, builderClass);
   }
@@ -194,7 +194,7 @@ public class BuilderGenerator {
   }
 
   /**
-   Maps the given fieldNames to an array PSI objects that they represent on
+   Maps the given fieldNames to an array of PSI objects that they represent on
    the recordClass.
    */
   @NotNull
