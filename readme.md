@@ -3,7 +3,7 @@ Plugin for generating "Builder" pattern code for Java records.
 That is, it takes record code that looks like 
 [SimpleRecordTestInput.java](./src/test/java/fruitfly/psi/SimpleRecordTestInput.java)
 and generates code to implement the builder pattern into that class - 
-[like this](./src/test/java/fruitfly/psi/CommentedRecordTestOutput.txt).
+[like this](./src/test/java/fruitfly/psi/SimpleRecordTestOutput.txt).
 
 This plugin will not be published in the marketplace.
 The intent is to copy it into a target project and then customise it to suit
