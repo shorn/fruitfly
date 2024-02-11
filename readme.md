@@ -49,11 +49,13 @@ for the fields you selected.
 # Customising the generated code
 
 This plugin is not intended be published in the marketplace.
-It's MIT licenced - so I can stop you from publishing it to the marketplace.
-But please re-label it if you do that. That is, rename it and set your own
-vendor and support email.
 The intent is to fork it, or copy it into your target project, and then
 customise it to the requirements of your specific project.
+
+Fruitfly is MIT licenced - so I couldn't prevent you from publishing it to the
+marketplace even if I wanted to. But please re-label it if you do that.
+That is: fork the repo, rename it and set your own vendor and support email in
+plugin.xml.
 
 
 To customise the generated code:
