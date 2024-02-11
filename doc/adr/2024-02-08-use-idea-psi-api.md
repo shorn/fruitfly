@@ -37,6 +37,8 @@ the Builder class and the `but()` method onto the record itself.
   * looks pretty good actually, and active, but I still think IDEA API is the
     right way to go - no concrete rationale for that, just a feeling.
 
+---
+
 In hindsight - the PSI API turned out to be pretty easy to use, and the 
 integration with IDEA made things go much faster than I think they otherwise
 would have.
