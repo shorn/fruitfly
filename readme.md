@@ -29,12 +29,14 @@ Select the zip that `buildPlugin` built in
 
 # Invoking the plugin
 
-Have the code for a Java **record** open in your editor and put your
-edit cursor somewhere on the record (the name, the definition, inside the
-record body, wherever).
+* Have the code for a Java **record** open in your editor and put your
+  edit cursor somewhere on the record (the name, the definition, inside the
+  record body, wherever).
 
-Invoke `/ Code / Generate...` action (either via the window menu, or by default
-it's bound to `Alt + Insert`, I think).
+* Invoke `/ Code / Generate...` action (either via the window menu, or by
+  default it's bound to `Alt + Insert`, I think).
+
+* Select `Fruitfly Builder` from the popup list.
 
 You should see a dialog allowing you to select the fields to generate, when
 you confirm, Fruitfly will generate (or _re_-generate) the builder pattern
