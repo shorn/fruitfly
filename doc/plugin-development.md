@@ -22,3 +22,25 @@ which is ignored) then browse to a class like `PsiClass` and do
 
 Consider only attaching source for the packages you actually actively using and
 need to see.
+
+# Running on later JDKs
+
+At the time the plugin was originally written, JDK was the LTS release, and 
+my preferred choice.
+
+But IDEA 2023.3.3 runs on JDK 17 - so it makes more sense to use that as the 
+basis for the plugin (declared in the Gradle toolchain).
+
+I had issues when integrating the plugin into a larger Gradle project that used
+JDK 21.  I was able to build the plugin, but when I tried to run the `test` task
+from IDEA - IDEA would launch the Gradle task with JDK 21 and it was cause 
+errors when running the tests.  The IDEA plugin unit test infrastructure 
+supports and uses JUnit versions all the way back to version 3, and that (or 
+something else in the plugin test infra) may have been causing problems with 
+the module system.
+
+That said, I've tried to change the JDK that the standalone Fruitfly project
+was using in IDEA and the test task still seemed to run.  The issue may have 
+been being caused by other complications in the large project I was integrating
+into.  Just be aware that you might run into issues integrating into projects
+on later versions of the JDK.

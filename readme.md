@@ -1,9 +1,8 @@
 Fruitfly is an Intellij IDEA plugin for generating "Builder" pattern code for
 Java records.
 
-It is targeted as the most recent version of IDEA `2023.3.3` and assumes
-you will use a JDK 17 SDK to build it.  Note that I had problems when I 
-tried to integrate it into a project using JDK 21 - your mileage may vary.
+It is targeted as the most recent version of IDEA `2023.3.3` and thus assumes
+you will use JDK 17 SDK to build and run it.  
 
 The plugin takes record code that looks like
 [SimpleRecordTestInput.java](./src/test/java/fruitfly/psi/SimpleRecordTestInput.java)
