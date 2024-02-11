@@ -2,6 +2,7 @@ package fruitfly.ide;
 
 /**
  These are own names we made up for our plugin, we make these up.
+ I'm not sure what the uniqueness requirements are.
  */
 public class PluginConstant {
 
