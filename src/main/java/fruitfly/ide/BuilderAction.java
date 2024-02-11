@@ -24,30 +24,6 @@ import static fruitfly.util.Log.log;
 public class BuilderAction extends AnAction {
 
 
-  public BuilderAction() {
-    super(
-      /* this is the entry you see in the generate menu.
-        Set event.presentation.text in update() method if you want the
-        value to be dynamic. */
-      "Fruitfly Builder",
-      /* used in tooltips and other places where there's more space */
-      "Generate a Builder pattern for the record",
-      null);
-  }
-
-  static void register() {
-    ActionManager actionManager = ActionManager.getInstance();
-    var action = new BuilderAction();
-
-    actionManager.registerAction(
-      BuilderAction.class.getName(),
-      action);
-
-    DefaultActionGroup generateGroup = (DefaultActionGroup)
-      actionManager.getAction(GENERATE_GROUP);
-    generateGroup.add(action);
-  }
-
   @Override
   public @NotNull ActionUpdateThread getActionUpdateThread() {
     return ActionUpdateThread.BGT;

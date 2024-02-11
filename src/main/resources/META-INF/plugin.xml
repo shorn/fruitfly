@@ -20,8 +20,18 @@
   <extensions defaultExtensionNs="com.intellij">
     <!-- MUST be kept in-sync with Constant.java, can't do it from code? -->
     <notificationGroup id="Fruitfly Notifications" displayType="BALLOON"/>
-    <postStartupActivity implementation="fruitfly.ide.Startup"/>
   </extensions>
+
+  <actions>
+    <action id="fruitfly.ide.BuilderAction"
+      class="fruitfly.ide.BuilderAction"
+      text="Fruitfly Builder"
+      description="Generate a Builder pattern for the record"
+    >
+      <add-to-group group-id="GenerateGroup" anchor="last"/>
+    </action>
+  </actions>
+
 
 </idea-plugin>
 
