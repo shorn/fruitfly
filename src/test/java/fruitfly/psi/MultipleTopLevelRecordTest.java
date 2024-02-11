@@ -7,25 +7,23 @@ import fruitfly.test.FruitflyTestCase;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- Just a simple record with some comments.
+ a file with multiple top level classes and one record smooshed in between them
  */
-public class CommentedRecordTest extends FruitflyTestCase {
-  private static final Logger log = Logger.getInstance(CommentedRecordTest.class);
+public class MultipleTopLevelRecordTest extends FruitflyTestCase {
+  private static final Logger log = Logger.getInstance(
+    MultipleTopLevelRecordTest.class);
 
+  public void testMultipleClasses() {
+    var inputJava = getTestPsiJavaFile("MultipleTopLevelTestInput.java");
+    var outputText = getTestPsiTextFile("MultipleTopLevelTestOutput.txt");
 
-  public void testCommentsShouldPersist() {
-    var inputJava = getTestPsiJavaFile("CommentedRecordTestInput.java");
-    var outputText = getTestPsiTextFile("CommentedRecordTestOutput.txt");
-
-    var recordClass = inputJava.getClasses()[0];
+    var recordClass = inputJava.getClasses()[1];
     WriteCommandAction.runWriteCommandAction(inputJava.getProject(), ()->{
       BuilderGenerator.generateBuilderPattern(recordClass);
     });
 
     log.info("generated: " + inputJava.getText());
     assertThat(inputJava.getText()).isEqualTo(outputText.getText());
-
   }
 
 }
-

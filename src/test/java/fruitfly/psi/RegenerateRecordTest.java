@@ -11,13 +11,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RegenerateRecordTest extends FruitflyTestCase {
   private static final Logger log = Logger.getInstance(RegenerateRecordTest.class);
 
-  public void testCommentsShouldPersist() {
+  public void testRegenerate() {
     var inputJava = getTestPsiJavaFile("RegenerateRecordTestInput.java");
     var outputText = getTestPsiTextFile("RegenerateRecordTestOutput.txt");
 
     var recordClass = inputJava.getClasses()[0];
     WriteCommandAction.runWriteCommandAction(inputJava.getProject(), ()->{
-      BuilderGenerator.generateBuilderClass(recordClass);
+      BuilderGenerator.generateBuilderPattern(recordClass);
     });
 
     log.info("generated: " + inputJava.getText());

@@ -28,7 +28,7 @@ public class NestedRecordTest extends FruitflyTestCase {
     record, then trigger the action. */
     var recordClass = inputJava.getClasses()[0].getInnerClasses()[0];
     WriteCommandAction.runWriteCommandAction(inputJava.getProject(), ()->{
-      BuilderGenerator.generateBuilderClass(recordClass);
+      BuilderGenerator.generateBuilderPattern(recordClass);
     });
 
     log.info("generated: " + inputJava.getText());

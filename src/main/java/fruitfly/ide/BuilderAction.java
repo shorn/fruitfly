@@ -68,7 +68,7 @@ public class BuilderAction extends AnAction {
     List<String> fields = RecordMemberChooser.chooseFieldNames(recordClass);
 
     WriteCommandAction.runWriteCommandAction(recordClass.getProject(), ()->{
-      BuilderGenerator.generateBuilderClass(recordClass, fields);
+      BuilderGenerator.generateBuilderPattern(recordClass, fields);
     });
 
   }

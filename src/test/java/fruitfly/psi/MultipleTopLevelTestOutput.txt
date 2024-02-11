@@ -1,0 +1,30 @@
+package fruitfly.psi;
+
+public class MultipleTopLevelTestInput{
+}
+
+record RecordExample(String field1) {
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public Builder but() {
+        return new Builder().field1(field1);
+    }
+
+    public static class Builder {
+        private String field1;
+
+        public Builder field1(String field1) {
+            this.field1 = field1;
+            return this;
+        }
+
+        public RecordExample build() {
+            return new RecordExample(this.field1);
+        }
+    }
+}
+
+class BottomNonPublicTopLevelClass{
+}

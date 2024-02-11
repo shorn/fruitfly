@@ -15,7 +15,7 @@ public class SimpleRecordTest extends FruitflyTestCase {
 
     var recordClass = inputJava.getClasses()[0];
     WriteCommandAction.runWriteCommandAction(inputJava.getProject(), ()->{
-      BuilderGenerator.generateBuilderClass(recordClass);
+      BuilderGenerator.generateBuilderPattern(recordClass);
     });
 
     log.info("generated: " + inputJava.getText());
