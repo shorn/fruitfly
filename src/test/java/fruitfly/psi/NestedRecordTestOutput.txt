@@ -6,19 +6,33 @@ public class NestedRecordTestInput {
 
   }
 
-    public static Builder builder() {
-        return new Builder();
-    }
+  public record Sample(String field1, String field2){
+      public static Builder builder() {
+          return new Builder();
+      }
 
-    public Builder but() {
-        return new Builder();
-    }
+      public Builder but() {
+          return new Builder().field1(field1).field2(field2);
+      }
 
-    public record Sample(String field1, String field2){}
+      public static class Builder {
+          private String field1;
 
-    public static class Builder {
-        public NestedRecordTestInput build() {
-            return new NestedRecordTestInput();
-        }
-    }
+          public Builder field1(String field1) {
+              this.field1 = field1;
+              return this;
+          }
+
+          private String field2;
+
+          public Builder field2(String field2) {
+              this.field2 = field2;
+              return this;
+          }
+
+          public Sample build() {
+              return new Sample(this.field1, this.field2);
+          }
+      }
+  }
 }

@@ -5,6 +5,8 @@ public record CommentedRecordTestInput(
   // field1 comment
   String field1
 ) {
+  /* body comment */
+
     public static Builder builder() {
         return new Builder();
     }
@@ -25,5 +27,4 @@ public record CommentedRecordTestInput(
             return new CommentedRecordTestInput(this.field1);
         }
     }
-    /* body comment */
 }

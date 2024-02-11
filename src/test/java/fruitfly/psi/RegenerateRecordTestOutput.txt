@@ -1,0 +1,49 @@
+package fruitfly.psi;
+
+/** record comment */
+public record RegenerateRecordTestInput(
+  // note that the type of field 1 has changed
+  int field1,
+  // and this field is added
+  String field2
+) {
+  /* top body comment */
+
+    public void userMiddleMethod(){
+    // simulates a method the user added by hand after instance methods but
+    // before the nested class
+  }
+
+    public void userBottomMethod(){
+    // simulates a method that the user added at the bottom of the record
+  }
+  // bottom body comment
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public Builder but() {
+        return new Builder().field1(field1).field2(field2);
+    }
+
+    public static class Builder {
+        private int field1;
+
+        public Builder field1(int field1) {
+            this.field1 = field1;
+            return this;
+        }
+
+        private String field2;
+
+        public Builder field2(String field2) {
+            this.field2 = field2;
+            return this;
+        }
+
+        public RegenerateRecordTestInput build() {
+            return new RegenerateRecordTestInput(this.field1, this.field2);
+        }
+    }
+}

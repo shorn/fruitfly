@@ -22,7 +22,11 @@ public class NestedRecordTest extends FruitflyTestCase {
     var inputJava = getTestPsiJavaFile("NestedRecordTestInput.java");
     var outputText = getTestPsiTextFile("NestedRecordTestOutput.txt");
 
-    var recordClass = inputJava.getClasses()[0];
+    /* the Action is responsible for making sure the inner record is selected,
+    in this example, it would not allow the action to be triggerred when the
+    top-level (non-record) class is selected. The user has to navigate to the
+    record, then trigger the action. */
+    var recordClass = inputJava.getClasses()[0].getInnerClasses()[0];
     WriteCommandAction.runWriteCommandAction(inputJava.getProject(), ()->{
       BuilderGenerator.generateBuilderClass(recordClass);
     });

@@ -67,6 +67,9 @@ public class BuilderGenerator {
       }
     }
 
+    // hopefully, this takes into account the removals we've already done
+    PsiElement lastChild = recordClass.getLastChild();
+
     // Start building the Builder class string representation
     StringBuilder builderClassContent = new StringBuilder(
       "public static class Builder {");
@@ -113,19 +116,18 @@ public class BuilderGenerator {
     for( PsiRecordComponent component : components ){
       parameters.add("this." + component.getName());
     }
-    builderClassContent.append(parameters.toString()).append(");");
+    builderClassContent.append(parameters).append(");");
     builderClassContent.append("}}");
 
     // Create the Builder class
     PsiClass newBuilderClass = elementFactory.createClassFromText(
       builderClassContent.toString(),
       recordClass);
-    PsiElement addedBuilderClass = recordClass.add(
-      /* It seems the createClassFromText() method generated a _Dummy_ parent
-       class for the inner class, we don't care about that - that's
-       why we have to dig our Builder class out of the innerClasses like this */
-      newBuilderClass.getInnerClasses()[0]
-    );
+    /* It seems the createClassFromText() method generated a _Dummy_ parent
+     class for the inner class, we don't care about that - that's
+     why we have to dig our Builder class out of the innerClasses like this */
+    PsiElement addedBuilderClass = recordClass.addBefore(
+      newBuilderClass.getInnerClasses()[0], lastChild );
 
 
     // Construct the 'but' method string
@@ -150,7 +152,8 @@ public class BuilderGenerator {
       butMethodContent.toString(),
       recordClass);
 
-    PsiElement addedButMethodElement = recordClass.add(butMethod);
+    PsiElement addedButMethodElement =
+      recordClass.addBefore(butMethod, addedBuilderClass);
 
 
     // Generate the static builder() method that returns an instance of the
@@ -164,7 +167,8 @@ public class BuilderGenerator {
     PsiMethod builderMethod = elementFactory.createMethodFromText(
       builderMethodContent.toString(),
       recordClass);
-    PsiElement addedBuilderMethodElement = recordClass.add(builderMethod);
+    PsiElement addedBuilderMethodElement =
+      recordClass.addBefore(builderMethod, addedButMethodElement);
 
     // Reformat code to adhere to project's code style settings
     JavaCodeStyleManager styleManager =
