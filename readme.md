@@ -16,7 +16,10 @@ see: [plugin-background.md](./doc/plugin-background.md)
 
 ## Build the plugin
 
-Run the `buildPlugin` task.
+Fruitfly is built with Gradle, using the 
+[Gradle IntelliJ plugin](https://lp.jetbrains.com/gradle-intellij-plugin/).
+
+Run the `buildPlugin` Gradle task.
 
 ## Install the plugin
 
