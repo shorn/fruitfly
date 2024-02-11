@@ -1,11 +1,9 @@
 package fruitfly.ide;
 
-import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.editor.Editor;
@@ -18,7 +16,6 @@ import fruitfly.psi.BuilderGenerator;
 import org.jetbrains.annotations.NotNull;
 
 import static com.intellij.psi.util.PsiTreeUtil.getParentOfType;
-import static fruitfly.ide.IdeaConstant.GENERATE_GROUP;
 import static fruitfly.util.Log.log;
 
 public class BuilderAction extends AnAction {

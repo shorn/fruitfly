@@ -7,7 +7,5 @@ package fruitfly.ide;
  */
 public class IdeaConstant {
 
-  public static final String GENERATE_GROUP = "GenerateGroup";
-
 
 }
