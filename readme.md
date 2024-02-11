@@ -1,19 +1,12 @@
-Plugin for generating "Builder" pattern code for Java records.
+Fruitfly is an Intellij IDEA plugin for generating "Builder" pattern code for
+Java records.
+
+It is targeted as the most recent version of IDEA `2023.3.3`.
 
 The plugin takes record code that looks like
 [SimpleRecordTestInput.java](./src/test/java/fruitfly/psi/SimpleRecordTestInput.java)
 and generates code into that class to implement the builder pattern -
 [like this](./src/test/java/fruitfly/psi/SimpleRecordTestOutput.txt).
-
-This plugin will not be published in the marketplace.
-The intent is to fork it, or copy it into your target project, and then
-customise it to the requirements of your specific project.
-
-To customise the generated builder pattern:
-
-* fork the project
-* edit [BuilderGenerator.java](src/main/java/fruitfly/psi/BuilderGenerator.java)
-  and customise the generated code
 
 For the "why" of using the builder pattern and having a custom plugin,
 see: [plugin-background.md](./doc/plugin-background.md)
@@ -46,6 +39,23 @@ it's bound to `Alt + Insert`, I think).
 You should see a dialog allowing you to select the fields to generate, when
 you confirm, Fruitfly will generate (or _re_-generate) the builder pattern
 for the fields you selected.
+
+
+# Customising the generated code
+
+This plugin is not intended be published in the marketplace.
+It's MIT licenced - so I can stop you from publishing it to the marketplace.
+But please re-label it if you do that. That is, rename it and set your own
+vendor and support email.
+The intent is to fork it, or copy it into your target project, and then
+customise it to the requirements of your specific project.
+
+
+To customise the generated code:
+
+* fork the project
+* edit [BuilderGenerator.java](src/main/java/fruitfly/psi/BuilderGenerator.java)
+  and customise the generated code
 
 
 # Developing the plugin
