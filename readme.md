@@ -58,12 +58,14 @@ marketplace even if I wanted to. But please re-label it if you do that.
 That is: fork the repo, rename it and set your own vendor and support email in
 plugin.xml.
 
-
 To customise the generated code:
 
 * fork the project
 * edit [BuilderGenerator.java](src/main/java/fruitfly/psi/BuilderGenerator.java)
   and customise the generated code
+
+See [plugin-structure.md](./doc/plugin-structure.md) for quick summary of
+the project structure.
 
 
 # Developing the plugin
