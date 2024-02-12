@@ -14,6 +14,10 @@ import static java.util.Objects.requireNonNull;
 
 public class RecordMemberChooser {
 
+  /**
+   Displays the confirmation dialog where users can choose what fields to
+   generate.
+   */
   public static List<String> chooseFieldNames(PsiClass recordClass) {
     List<PsiFieldMember> members =
       RecordMemberChooser.mapAllFieldMembers(recordClass);
@@ -66,6 +70,9 @@ public class RecordMemberChooser {
       toList();
   }
 
+  /**
+   Defines fields should be selected by default.
+   */
   public static boolean isDefaultSelection(PsiFieldMember field) {
     return !field.getElement().getName().equals("serialVersionUID");
   }

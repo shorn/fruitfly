@@ -19,6 +19,9 @@ import java.util.List;
 
 import static com.intellij.psi.util.PsiTreeUtil.getParentOfType;
 
+/**
+ Defines the `Fruitfly Builder` item in the generate menu.
+ */
 public class BuilderAction extends AnAction {
   private static final Logger log = Logger.getInstance(BuilderAction.class);
 
@@ -28,6 +31,10 @@ public class BuilderAction extends AnAction {
     return ActionUpdateThread.BGT;
   }
 
+  /**
+   defines the visibility (item is only visible when you
+   have a record selected)
+   */
   @Override
   public void update(@NotNull AnActionEvent event) {
     // log.warn("update()");
@@ -49,6 +56,10 @@ public class BuilderAction extends AnAction {
     event.getPresentation().setEnabledAndVisible(isRecord(event) != null);
   }
 
+  /**
+   displays a member chooser for use to select which fields the builder
+   should use, then generates the builder code
+   */
   @Override
   public void actionPerformed(@NotNull AnActionEvent event) {
 

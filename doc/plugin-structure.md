@@ -17,24 +17,15 @@ services / actions that the plugin uses.
 
 [BuilderAction.java](../src/main/java/fruitfly/ide/BuilderAction.java)
 
-This controls the `Fruitfly Builder` item in the generate menu.
-
-The `update()` method defines the visibility (item is only visible when you
-have a record selected).
-
-The `actionPerformed()` method:
-
-* displays the member chooser for selecting which
-  fields the builder should use.
-* calls the `BuilderGenerator` code to generate the builder code
+Defines the `Fruitfly Builder` item in the generate menu.
 
 
 ## `RecordMemberChooser.java`
 
 [RecordMemberChooser.java](../src/main/java/fruitfly/ide/RecordMemberChooser.java)
 
-Displays the confirmation dialog where users can choose what fields to generate.
-Contains logic to decide what fields should be selected by default.
+Allows selection of which fields to use in the builder pattern structures.
+
 
 ## `RecordMemberChooser.java`
 
