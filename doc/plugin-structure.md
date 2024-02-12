@@ -29,14 +29,14 @@ fields the builder should use.
 * calls the `BuilderGenerator` code to generate the builder code
 
 
-## `RecordMemberChooser`
+## `RecordMemberChooser.java`
 
 [RecordMemberChooser.java](../src/main/java/fruitfly/ide/RecordMemberChooser.java)
 
 Displays the confirmation dialog where users can choose what fields to generate.
 Contains logic to decide what fields should be selected by default.
 
-## `RecordMemberChooser`
+## `RecordMemberChooser.java`
 
 [BuilderGenerator.java](../src/main/java/fruitfly/psi/BuilderGenerator.java)
 
