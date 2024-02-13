@@ -50,3 +50,12 @@ was using in IDEA and the test task still seemed to run. The issue may have
 been being caused by other complications in the large project I was integrating
 into. Just be aware that you might run into issues integrating into projects
 on later versions of the JDK.
+
+
+# Running unit tests
+
+Run the `test` Gradle task.
+
+See [plugin-structure.md](./plugin-structure.md#test-code) for discussion of 
+how the existing unit tests are structured.
+
