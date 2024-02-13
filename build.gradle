@@ -5,10 +5,6 @@ plugins {
 
 println 'Gradle build launched with Java version: ' + JavaVersion.current()
 
-group 'fruitfly'
-// this drives the version in plugin.xml, via the patchPluginXml task
-version '1.0'
-
 repositories {
   mavenCentral()
 }
@@ -25,20 +21,20 @@ dependencies {
 
 intellij {
   /* "/ Help / About" in sandbox IDEA reported `#IC-233.14015.106` */
-   version = '2023.3.3'
+  version = '2023.3.3'
   /* doesn't seem to work, see plugin-development.md */
   downloadSources = true
   /* community is smaller, less features - so faster startup when testing */
   type = 'IC'
   /* controls what libraries the gradle-intellij plugin will add do the
-  dependencies list.  Needs to be kept in sync with plugin.xml */
+    dependencies list.  Needs to be kept in sync with plugin.xml */
   plugins = ['com.intellij.java']
 }
 
 java {
   toolchain {
-    // fruitfly only targets the one specific IDEA version, no need for
-    // backward compatibility so no need to worry about supporting old JDKs
+    /* fruitfly only targets the one specific IDEA version, no need for
+      backward compatibility so no need to worry about supporting old JDKs */
     languageVersion = JavaLanguageVersion.of(17)
     vendor = JvmVendorSpec.JETBRAINS
   }
@@ -56,6 +52,10 @@ runIde {
     un-buffered, stdout is buffered) */
   errorOutput = System.out
 }
+
+group 'fruitfly'
+// this drives the version in plugin.xml, via the patchPluginXml task
+version '1.0'
 
 patchPluginXml {
   changeNotes = """
