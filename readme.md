@@ -4,10 +4,32 @@ Java records.
 It is targeted as the most recent version of IDEA `2023.3.3` and thus assumes
 you will use JDK 17 SDK to build and run it.  
 
+# Functionality 
+
 The plugin takes record code that looks like
 [SimpleRecordTestInput.java](./src/test/java/fruitfly/psi/SimpleRecordTestInput.java)
 and generates code into that class to implement the builder pattern -
 [like this](./src/test/java/fruitfly/psi/SimpleRecordTestOutput.txt).
+
+
+# Usage
+
+* Have the code for a Java **record** open in your editor and put your
+edit cursor somewhere on the record (the name, the definition, inside the
+record body, wherever).
+
+* Invoke `/ Code / Generate...` action (either via the window menu, or by
+  default it's bound to `Alt + Insert`, I think).
+
+* Select `Fruitfly Builder` from the popup list.
+
+* You should see a dialog allowing you to select the fields to generate, when
+you confirm, Fruitfly will generate (or _re_-generate) the builder pattern
+for the fields you selected.
+
+You can then use the builder pattern to create records 
+[like this](./src/test/java/fruitfly/example/RecordUsageExampleTest.java).
+
 
 For the "why" of using the builder pattern and having a custom plugin,
 see: [plugin-background.md](./doc/plugin-background.md)
@@ -29,22 +51,6 @@ Run the `buildPlugin` Gradle task.
 
 Select the zip that `buildPlugin` built in
 `/build/distributions` (e.g. `fruitfly-1.0.zip`).
-
-
-# Invoking the plugin
-
-* Have the code for a Java **record** open in your editor and put your
-  edit cursor somewhere on the record (the name, the definition, inside the
-  record body, wherever).
-
-* Invoke `/ Code / Generate...` action (either via the window menu, or by
-  default it's bound to `Alt + Insert`, I think).
-
-* Select `Fruitfly Builder` from the popup list.
-
-You should see a dialog allowing you to select the fields to generate, when
-you confirm, Fruitfly will generate (or _re_-generate) the builder pattern
-for the fields you selected.
 
 
 # Customising the generated code
