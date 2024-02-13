@@ -1,5 +1,3 @@
-import com.jogamp.nativewindow.DefaultGraphicsDevice
-
 plugins {
   id 'java'
   id 'org.jetbrains.intellij' version '1.17.1'
@@ -28,9 +26,9 @@ dependencies {
 intellij {
   /* "/ Help / About" in sandbox IDEA reported `#IC-233.14015.106` */
    version = '2023.3.3'
-  /* doesn't seem to work, see readme. */
+  /* doesn't seem to work, see plugin-development.md */
   downloadSources = true
-  /* community is smaller, less features - so faster startup */
+  /* community is smaller, less features - so faster startup when testing */
   type = 'IC'
   /* controls what libraries the gradle-intellij plugin will add do the
   dependencies list.  Needs to be kept in sync with plugin.xml */
