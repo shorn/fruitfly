@@ -41,22 +41,10 @@ See
 [RecordUsageExampleTest.java](./src/test/java/fruitfly/example/RecordUsageExampleTest.java)
 for an example of code using the builder.  
 
+
 # Installing the plugin into your own IDEA
 
-Fruitfly is built with Gradle, using the
-[Gradle IntelliJ plugin](https://lp.jetbrains.com/gradle-intellij-plugin/).
-
-## Build the plugin
-
-Run the `buildPlugin` Gradle task.
-
-## Install the plugin
-
-/ `Settings` / `Plugins` / `<gear icon at top right>` /
-`Install plugin from disk ...`
-
-Select the zip that `buildPlugin` built in
-`/build/distributions` (e.g. `fruitfly-1.0.zip`).
+See [install.md](./install.md)
 
 
 # Customising the generated code
@@ -76,8 +64,7 @@ To customise the generated code:
 * edit [BuilderGenerator.java](src/main/java/fruitfly/psi/BuilderGenerator.java)
   and customise the generated code
 
-See [plugin-structure.md](./doc/plugin-structure.md) for quick summary of
-the project structure.
+See [plugin-structure.md](./doc/plugin-structure.md) for quick summary of the project structure.
 
 
 # Developing the plugin
