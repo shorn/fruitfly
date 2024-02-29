@@ -1,18 +1,43 @@
 ## Why use a builder pattern for records?
 
-Java records are fine when they're used for trivial things with small numbers
-of fields.
+You shouldn't.
 
-They become unusable as the number of fields grows, especially with many fields
-of the same type (e.g. lots of strings).
+Because you shouldn't be using records for this replacing
+javabeans.
+
+Because they're fundamentally not intended for this
+purpose, [JEP 395](https://openjdk.org/jeps/395):
+> it is not a goal to declare a "war on boilerplate". In particular, it is not a
+> goal to address the problems of mutable classes which use the JavaBeans naming
+> conventions.
+
+Read enough quotes from the Java team and other experts about records
+([quotations-on-java-records.md](./quotations-on-java-records.md)) and you'll
+come to see that using records for this purpose is probably a mistake.
+
+
+## So why create a plugin for generating builder code for records?
+
+Because records are a convenient replacement for javabeans.
+
+
+## What are the problems with using records as a replacement for javabeans?
+
+Simple records are fine when they have a small number of components.
+
+But because Java does not have named parameters, invoking record constructors
+is done positionally and that leads to confusing and non-obvious code when
+dealing with large records.  
+As the number of constructor parameters grows it becomes
+difficult to perceive which parameter is which, especially when dealing with
+many components of the same type (string, int etc.)
 
 They're particularly awkward when you need to create a new record that
 represents a modification to an existing record.
+
 The Java team recognise the modification part - hence the JEP for
 "derived record creation": https://openjdk.org/jeps/8321133.
-But that JEP is many years away from being usable. Also, it doesn't actually
-target the issues of readability and maintainability of records - so it's
-unlikely to be of much help when it does finally arrive.
+But that JEP is many years away from being usable.
 
 
 ## Marketplace builder plugins
@@ -63,7 +88,11 @@ The rationale for adopting a project-specific plugin stems from the belief that
 there is no universally "right" way to structure a builder; rather only,
 "this is the way we do it on this project".
 
-Having the plugin be specifically written for "the project way" means
+Therefore, any attempt to create a "generic" builder plugin suitable for broad
+usage would need to support many of the different (equally valid) ways of
+structuring a builder.
+
+Having a specific plugin that only needs to support "the project way" means
 it can be fast to invoke and there's no need to spend time writing and
 maintaining customisation logic, UI, persistence, etc.
 
