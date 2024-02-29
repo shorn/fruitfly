@@ -2,8 +2,7 @@
 
 You shouldn't.
 
-Because you shouldn't be using records for this replacing
-javabeans.
+Because you shouldn't be using records for as a replacement for javabeans.
 
 Because they're fundamentally not intended for this
 purpose, [JEP 395](https://openjdk.org/jeps/395):
@@ -26,18 +25,18 @@ Because records are a convenient replacement for javabeans.
 Simple records are fine when they have a small number of components.
 
 But because Java does not have named parameters, invoking record constructors
-is done positionally and that leads to confusing and non-obvious code when
-dealing with large records.  
+is done positionally.  
 As the number of constructor parameters grows it becomes
-difficult to perceive which parameter is which, especially when dealing with
+difficult to recognise which parameter is which, especially when dealing with
 many components of the same type (string, int etc.)
 
 They're particularly awkward when you need to create a new record that
 represents a modification to an existing record.
 
 The Java team recognise the modification part - hence the JEP for
-"derived record creation": https://openjdk.org/jeps/8321133.
-But that JEP is many years away from being usable.
+"derived record creation": [JEP 468](https://openjdk.org/jeps/8321133).
+But that JEP is many years away from being usable and likely won't be all that
+useful for folks using records The Wrong Way. 
 
 
 ## Marketplace builder plugins
