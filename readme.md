@@ -22,9 +22,11 @@ and generates code into that class to implement the builder pattern -
 
 * Navigate to `/ Code / Generate...` or use the shortcut `Alt + Insert`.
 
+
 2. **Select Fruitfly Builder**:
 
 * From the popup list, choose `Fruitfly Builder`.
+
 
 3. **Customize Your Builder**:
 
@@ -32,9 +34,9 @@ and generates code into that class to implement the builder pattern -
   pattern.
 
 
-See 
+See
 [RecordUsageExampleTest.java](./src/test/java/fruitfly/example/RecordUsageExampleTest.java)
-for an example of code using the builder.  
+for an example of code using the builder.
 
 
 # Installing the plugin into your own IDEA
@@ -50,3 +52,14 @@ See [contributing.md](./contributing.md)
 # Developing the plugin
 
 See [plugin-development.md](./doc/plugin-development.md).
+
+
+# Plugin issues, improvements and discussions
+
+I don't want to faff around with GitHub issue tracking.
+Start a discussion if you'd like to ask questions or discuss something.
+I'd rather you just forked the project and do it yourself if you want the
+plugin to do something differently.
+
+See [todo.md](./doc/todo.md) for known issues or changes that I plan to
+work on.
