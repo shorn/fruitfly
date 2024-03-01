@@ -4,8 +4,8 @@ You shouldn't.
 
 Because you shouldn't be using records for as a replacement for javabeans.
 
-Because they're fundamentally not intended for this
-purpose, [JEP 395](https://openjdk.org/jeps/395):
+Because they're fundamentally not intended for this purpose,
+[JEP 395](https://openjdk.org/jeps/395):
 > it is not a goal to declare a "war on boilerplate". In particular, it is not a
 > goal to address the problems of mutable classes which use the JavaBeans naming
 > conventions.
