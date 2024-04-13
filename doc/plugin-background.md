@@ -1,6 +1,6 @@
 ## Why use a builder pattern for records?
 
-You shouldn't.
+According to the Java language team: you shouldn't. 😐
 
 Because you shouldn't be using records for as a replacement for javabeans.
 
@@ -17,12 +17,12 @@ come to see that using records for this purpose is probably a mistake.
 
 ## So why create a plugin for generating builder code for records?
 
-Because records are a convenient replacement for javabeans.
+Because records are a convenient replacement for javabeans. 🤪
 
 
 ## What are the problems with using records as a replacement for javabeans?
 
-Simple records are fine when they have a small number of components.
+Simple records are fine - when they have a small number of components.
 
 But because Java does not have named parameters, invoking record constructors
 is done positionally.  
