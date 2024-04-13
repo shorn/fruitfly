@@ -27,7 +27,7 @@ Defines the `Fruitfly Builder` item in the generate menu.
 Allows selection of which fields to use in the builder pattern structures.
 
 
-## `RecordMemberChooser.java`
+## `BuilderGenerator.java`
 
 [BuilderGenerator.java](../src/main/java/fruitfly/psi/BuilderGenerator.java)
 
