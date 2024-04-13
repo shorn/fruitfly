@@ -31,7 +31,7 @@ need to see.
 
 # Running on later JDKs
 
-At the time the plugin was originally written, JDK was the LTS release, and
+At the time the plugin was originally written, JDK 21 was the LTS release, and
 my preferred choice.
 
 But IDEA 2023.3.3 runs on JDK 17 - so it makes more sense to use that as the
@@ -47,7 +47,7 @@ the module system.
 
 That said, I've tried to change the JDK that the standalone Fruitfly project
 was using in IDEA and the test task still seemed to run. The issue may have
-been being caused by other complications in the large project I was integrating
+been being caused by other complications in the larger project I was integrating
 into. Just be aware that you might run into issues integrating into projects
 on later versions of the JDK.
 

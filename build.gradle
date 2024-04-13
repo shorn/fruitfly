@@ -20,12 +20,18 @@ dependencies {
 }
 
 intellij {
-  /* "/ Help / About" in sandbox IDEA reported `#IC-233.14015.106` */
-  version = '2023.3.3'
+  /* controls what version we'll build and test against, but actual
+  /* controls what version we'll build and test against, but actual
+  /* controls what version we'll build and test against, but actual
+    compatibility with IDEA versions is defined in patchPluginXml. */
+  version = '2024.1'
+
   /* doesn't seem to work, see plugin-development.md */
   downloadSources = true
+
   /* community is smaller, less features - so faster startup when testing */
   type = 'IC'
+
   /* controls what libraries the gradle-intellij plugin will add do the
     dependencies list.  Needs to be kept in sync with plugin.xml */
   plugins = ['com.intellij.java']
@@ -58,12 +64,13 @@ group 'fruitfly'
 version '1.0'
 
 patchPluginXml {
-  changeNotes = """
-    Change notes: 
-    <ul>
-      <li>Initial version of the plugin</li>
-    </ul>
-    """
+  /* Initially implemented against 2023.3. The plugin is assumed compatible
+   because we haven't changed usage of any APIs to anything that wouldn't be
+   available in 2023.3 */
+  sinceBuild = '233.0'
+  /* I've no intention of updating this every time a version is released; when
+    it breaks, it breaks. */
+  untilBuild = '999.*'
 }
 
 /* to upgrade, change the version below and run this task
